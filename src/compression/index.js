@@ -1,8 +1,8 @@
-import RawDecoder from './raw';
-import LZWDecoder from './lzw';
-import JpegDecoder from './jpeg';
-import DeflateDecoder from './deflate';
-import PackbitsDecoder from './packbits';
+import RawDecoder from './raw.js';
+import LZWDecoder from './lzw.js';
+import JpegDecoder from './jpeg.js';
+import DeflateDecoder from './deflate.js';
+import PackbitsDecoder from './packbits.js';
 
 export function getDecoder(fileDirectory) {
   switch (fileDirectory.Compression) {

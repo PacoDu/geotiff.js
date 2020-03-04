@@ -6,8 +6,8 @@
 */
 
 
-import { fieldTagNames, fieldTagTypes, fieldTypeNames, geoKeyNames } from './globals';
-import { assign, endsWith, forEach, invert, times } from './utils';
+import { fieldTagNames, fieldTagTypes, fieldTypeNames, geoKeyNames } from './globals.js';
+import { assign, endsWith, forEach, invert, times } from './utils.js';
 
 
 const tagName2Code = invert(fieldTagNames);

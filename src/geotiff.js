@@ -1,14 +1,14 @@
-import { fieldTypes, fieldTagNames, arrayFields, geoKeyNames } from './globals';
-import GeoTIFFImage from './geotiffimage';
-import DataView64 from './dataview64';
-import DataSlice from './dataslice';
-import { makeRemoteSource, makeBufferSource, makeFileSource, makeFileReaderSource } from './source';
-import Pool from './pool';
-import { writeGeotiff } from './geotiffwriter';
+import { fieldTypes, fieldTagNames, arrayFields, geoKeyNames } from './globals.js';
+import GeoTIFFImage from './geotiffimage.js';
+import DataView64 from './dataview64.js';
+import DataSlice from './dataslice.js';
+import { makeRemoteSource, makeBufferSource, makeFileSource, makeFileReaderSource } from './source.js';
+import Pool from './pool.js';
+import { writeGeotiff } from './geotiffwriter.js';
 
-import * as globals from './globals';
+import * as globals from './globals.js';
 export { globals };
-import * as rgb from './rgb';
+import * as rgb from './rgb.js';
 export { rgb };
 
 function getFieldTypeLength(fieldType) {

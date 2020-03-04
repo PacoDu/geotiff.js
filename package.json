@@ -9,7 +9,13 @@
     "image",
     "raster"
   ],
-  "main": "dist/main.js",
+  "main": "src/geotiff.js",
+  "module": "dist/geotiff.js",
+  "type": "module",
+  "exports": {
+    "import": "./src/geotiff.js",
+    "require": "./dist/main.cjs"
+  },
   "dependencies": {
     "pako": "^1.0.3",
     "threads": "^1.3.0",
@@ -39,7 +45,8 @@
     "jsdoc-babel": "^0.2.1",
     "jshint-stylish": "^2.2.1",
     "mocha": "^3.1.2",
-    "webpack": "^4.41.6",
+    "parcel-bundler": "^1.12.4",
+    "webpack": "^4.42.0",
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
@@ -49,13 +56,11 @@
   "scripts": {
     "analyze": "NODE_ENV=production webpack -p --config webpack.analyze.js",
     "dev": "webpack-dev-server -d -w --content-base test",
-    "watch": "webpack -d -w",
+    "watch": "webpack -d -w --config webpack.config.cjs",
     "build:clean": "rm -rf dist/*",
-    "bundle:dev": "webpack -d ",
-    "bundle:prod": "NODE_ENV=production webpack -p",
-    "build:babel": "babel src/ -d dist",
-    "build:babel:watch": "babel src/ -d dist -w",
-    "build": "npm run build:clean ; npm run bundle:dev ; npm run bundle:prod ; npm run build:babel",
+    "bundle:dev": "webpack -d --config webpack.config.cjs",
+    "bundle:prod": "NODE_ENV=production webpack -p --config webpack.config.cjs",
+    "build": "npm run build:clean ; npm run bundle:dev ; npm run bundle:prod",
     "test": "mocha --compilers js:babel-core/register --require babel-polyfill",
     "lint": "eslint src",
     "docs": "rm -rf docs/*; jsdoc -c .jsdoc.json -r src README.md -d docs",

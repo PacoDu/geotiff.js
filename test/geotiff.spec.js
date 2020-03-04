@@ -5,9 +5,9 @@ import isNode from 'detect-node';
 import { expect } from 'chai';
 import 'isomorphic-fetch';
 
-import { GeoTIFF, fromArrayBuffer, writeArrayBuffer, Pool } from '../src/main';
-import { makeFetchSource, makeFileSource } from '../src/source';
-import { chunk, toArray, toArrayRecursively, range } from '../src/utils';
+import { GeoTIFF, fromArrayBuffer, writeArrayBuffer, Pool } from '../src/geotiff.js';
+import { makeFetchSource, makeFileSource } from '../src/source.js';
+import { chunk, toArray, toArrayRecursively, range } from '../src/utils.js';
 
 
 function createSource(filename) {
