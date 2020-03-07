@@ -1,14 +1,10 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable global-require */
-
 import isNode from 'detect-node';
-import { expect } from 'chai';
-import 'isomorphic-fetch';
+import chai from 'chai';
+const { expect } = chai;
 
-import { GeoTIFF, fromArrayBuffer, writeArrayBuffer, Pool } from '../src/geotiff.js';
+import { GeoTIFF, fromArrayBuffer, writeArrayBuffer } from '../src/geotiff.js';
 import { makeFetchSource, makeFileSource } from '../src/source.js';
 import { chunk, toArray, toArrayRecursively, range } from '../src/utils.js';
-
 
 function createSource(filename) {
   if (isNode) {
@@ -175,13 +171,6 @@ describe('GeoTIFF', () => {
     image.readRasters();
   });
 
-  it('should work with worker pool', async () => {
-    const pool = new Pool()
-    const tiff = await GeoTIFF.fromSource(createSource('nasa_raster.tiff'));
-    const image = await tiff.getImage();
-    image.readRasters({ pool });
-  });
-
   it('should work with LZW compressed tiffs that have an EOI Code after a CLEAR code', async () => {
     const tiff = await GeoTIFF.fromSource(createSource('lzw_clear_eoi/lzw.tiff'));
     const image = await tiff.getImage();
@@ -233,8 +222,6 @@ describe('RGBA-tests', () => {
     const tiff = await GeoTIFF.fromSource(createSource('RGBA.tiff'));
     await performRGBTest(tiff, options, comparisonRaster, 3);
   });
-
-
 });
 
 describe('Geo metadata tests', async () => {
@@ -258,8 +245,6 @@ describe('Geo metadata tests', async () => {
 });
 
 describe("writeTests", function() {
-
-
   it("should write pixel values and metadata with sensible defaults", async () => {
 
     const originalValues = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -457,5 +442,4 @@ describe("writeTests", function() {
     expect(fileDirectory.GDAL_NODATA).to.equal("0\u0000");
 
   });
-
 });

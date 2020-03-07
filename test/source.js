@@ -1,18 +1,20 @@
 /* eslint-disable no-unused-expressions */
-/* eslint-disable global-require */
 
+import { createRequire } from 'module'
 import isNode from 'detect-node';
 import 'isomorphic-fetch';
-import { expect } from 'chai';
+import chai from 'chai';
+const { expect } = chai;
 
-import { makeFetchSource } from '../src/source';
+import { makeFetchSource } from '../src/source.js';
 
 const port = 9999;
 let server = null;
 
 before(() => {
   if (isNode) {
-    const express = require('express');
+    const require = createRequire(import.meta.url)
+    const express = require('express')
     const app = express();
     app.use(express.static('.'));
     server = app.listen(9999);
@@ -24,7 +26,6 @@ after(() => {
     server.close();
   }
 });
-
 
 describe('makeFetchSource', () => {
   it('shall fetch the first n bytes', async () => {

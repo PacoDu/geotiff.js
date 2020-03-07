@@ -1,4 +1,4 @@
-import { expose } from 'threads/worker'
+import { expose } from 'threads/worker';
 import { getDecoder } from './compression/index.js';
 
 function decode(fileDirectory, buffer) {
@@ -6,4 +6,4 @@ function decode(fileDirectory, buffer) {
   return decoder.decode(fileDirectory, buffer);
 }
 
-expose(decode)
+expose(decode);
